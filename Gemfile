@@ -49,8 +49,11 @@ gem 'bootstrap', '~> 5.3.0'
 gem 'jquery-rails'
 gem 'sassc-rails'
 
-# 環境変数を使用できる
+# 環境変数を使用
 gem 'dotenv-rails'
+
+# 日本語化
+gem "rails-i18n", "~> 7.0.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
