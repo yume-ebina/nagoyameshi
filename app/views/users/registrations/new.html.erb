@@ -1,0 +1,174 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <h3 class="mt-3 mb-3">新規会員登録</h3>
+
+        <hr>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="form-group row">
+
+          <%= f.label :name, "", class: "col-md-5 col-form-label text-md-left" do %>
+            氏名
+            <span class="ml-1 nagoyameshi-require-input-label">
+              <span class="nagoyameshi-require-input-label-text">必須</span>
+            </span>
+          <% end %>
+
+          <div class="col-md-7">
+            <%=
+              f.text_field :name,
+              class: "form-control #{"is-invalid" if resource.errors.messages[:name].present? } nagoyameshi-login-input",
+              autofocus: "true",
+              required: "",
+              autocomplete: "name",
+              placeholder: "名古屋 太郎"
+            %>
+
+            <% if resource.errors.messages[:name].present? %>
+              <span class="nagoyameshi-error-message">
+                <strong><%= resource.errors.full_messages_for(:name).first %></strong>
+              </span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+
+          <%= f.label :kana, "", class: "col-md-5 col-form-label text-md-left" do %>
+            フリガナ
+            <span class="ml-1 nagoyameshi-require-input-label">
+              <span class="nagoyameshi-require-input-label-text">必須</span>
+            </span>
+          <% end %>
+
+          <div class="col-md-7">
+            <%=
+              f.text_field :kana,
+              class: "form-control #{"is-invalid" if resource.errors.messages[:kana].present? } nagoyameshi-login-input",
+              autofocus: "true",
+              required: "",
+              autocomplete: "kana",
+              placeholder: "ナゴヤ タロウ"
+            %>
+
+            <% if resource.errors.messages[:kana].present? %>
+              <span class="nagoyameshi-error-message">
+                <strong><%= resource.errors.full_messages_for(:kana).first %></strong>
+              </span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :email, "", class: "col-md-5 col-form-label text-md-left" do %>
+          メールアドレス
+            <span class="ml-1 nagoyameshi-require-input-label">
+              <span class="nagoyameshi-require-input-label-text">必須</span>
+            </span>
+          <% end %>
+
+          <div class="col-md-7">
+            <%=
+              f.email_field :email,
+              class: "form-control #{"is-invalid" if resource.errors.messages[:email].present? } nagoyameshi-login-input",
+              autofocus: "true",
+              required: "",
+              autocomplete: "email",
+              placeholder: "メールアドレス"
+            %>
+
+            <% if resource.errors.messages[:email].present? %>
+              <span class="nagoyameshi-error-message">
+                <strong><%= resource.errors.full_messages_for(:email).first %></strong>
+              </span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :gender, class: "col-md-5 col-form-label text-md-left" do %>
+            性別
+              <span class="ml-1 nagoyameshi-require-input-label">
+                <span class="nagoyameshi-require-input-label-text">必須</span>
+              </span>
+          <% end %>
+
+          <div class="col-md-7">
+            <%= f.radio_button :gender, :male, checked: true %>
+            <%= f.label :gender, "男性", {value: :male, style: "display: inline-block; margin-right: 30px"} %>
+            <%= f.radio_button :gender, :female %>
+            <%= f.label :gender, "女性", {value: :female, style: "display: inline-block;"} %>
+            <% if resource.errors.messages[:gender].present? %>
+            <span class="nagoyameshi-error-message">
+              <strong><%= resource.errors.full_messages_for(:gender).first %></strong>
+            </span>
+            <% end %>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <%= f.label :birthday, class: "col-md-5 col-form-label text-md-left" do %>
+          生年月日
+            <span class="ml-1 nagoyameshi-require-input-label">
+              <span class="nagoyameshi-require-input-label-text">必須</span>
+            </span>
+          <% end %>
+
+          <div class="col-md-7">
+            <%= f.date_select :birthday, {start_year: 1950, end_year: (Time.now.year - 5),
+            include_blank: true, use_two_digit_numbers: true},
+            {class: "nagoyameshi-login-input"}%>
+
+            <% if resource.errors.messages[:birthday].present? %>
+            <span class="nagoyameshi-error-message">
+              <strong><%= resource.errors.full_messages_for(:birthday).first %></strong>
+            </span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :password, "", class: "col-md-5 col-form-label text-md-left" do %>
+          パスワード
+            <span class="ml-1 nagoyameshi-require-input-label">
+              <span class="nagoyameshi-require-input-label-text">必須</span>
+            </span>
+          <% end %>
+
+          <div class="col-md-7">
+            <%=
+              f.password_field :password,
+              class: "form-control #{ "is-invalid" if resource.errors.messages[:password].present? } nagoyameshi-login-input",
+              autofocus: "true"
+            %>
+            <% if resource.errors.messages[:password].present? %>
+            <span class="nagoyameshi-error-message">
+              <strong><%= resource.errors.full_messages_for(:password).first %></strong>
+            </span>
+            <% end %>
+            </div>
+          </div>
+
+        <div class="form-group row">
+          <%= f.label :password_confirmation, "", class: "col-md-5 col-form-label text-md-left" do %>
+          <% end %>
+          <div class="col-md-7">
+            <%=
+              f.password_field :password_confirmation,
+              class: "form-control nagoyameshi-login-input",
+              autocomplete: "new-password"
+            %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn nagoyameshi-submit-button w-100">
+            アカウント作成
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
