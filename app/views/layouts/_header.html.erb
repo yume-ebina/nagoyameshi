@@ -29,7 +29,8 @@
         </li>
         -->
       <% else %>
-      <!-- ログイン前 -->
+      <!-- ログイン前 アドミンでは非表示 -->
+        <% if resource_is_user? %>
         <li class="nav-item mr-5">
           <%= link_to new_user_registration_path, class: "nav-link" do %>
             <label>新規登録</label>
@@ -40,6 +41,7 @@
             <label>ログイン</label>
           <% end %>
         </li>
+        <% end %>
         <hr>
       <% end %>
     </div>
