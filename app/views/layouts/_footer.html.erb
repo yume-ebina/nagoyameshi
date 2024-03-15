@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-bottom mt-5">
   <%= link_to root_path, class: "navbar-brand mx-auto" do %>
-    <p>Nagoyameshi </p>
+    <%= ENV["APP_NAME"] %>
   <% end %>
 </nav>
