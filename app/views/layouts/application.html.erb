@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Nagoyameshi</title>
+    <title><%= ENV["APP_NAME"] %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: 'layouts/header' %>
+    <main class="py-4 mb-5">
+      <% if notice %><p class="alert alert-warning"><%= notice %></div><% end %>
+      <% if alert %><p class="alert alert-danger"><%= alert %></p><% end %>
+      <%= yield %>
+    </main>
+    <%= render partial: 'layouts/footer' %>
   </body>
 </html>
