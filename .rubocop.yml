@@ -18,6 +18,7 @@ require:
   - rubocop-rspec
 
 AllCops:
+  SuggestExtensions: false
   TargetRubyVersion: 3.1
   Exclude:
     - 'vendor/**/*'
@@ -28,6 +29,8 @@ AllCops:
     - 'test/*'
     - 'node_modules/**/*'
     - 'config/initializers/**/*'
+    - 'config/environments/**/*'
+    - 'config/application.rb'
     - 'public/**/*'
     - 'storage/**/*'
     - 'log/**/*'
