@@ -8,9 +8,6 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 
@@ -44,9 +41,26 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# devise追加
+gem 'devise'
+
+# bootstrap追加
+gem 'bootstrap', '~> 5.3.0'
+gem 'jquery-rails'
+gem 'sassc-rails'
+
+# 環境変数を使用
+gem 'dotenv-rails'
+
+# 日本語化
+gem "rails-i18n", "~> 7.0.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+
+  # Use sqlite3 as the database for Active Record
+  gem "sqlite3", "~> 1.4"
 end
 
 group :development do
@@ -58,6 +72,13 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  #rubocop追加
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+
 end
 
 group :test do
