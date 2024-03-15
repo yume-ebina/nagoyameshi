@@ -42,15 +42,15 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # devise追加
-gem 'devise'
+gem "devise"
 
 # bootstrap追加
-gem 'bootstrap', '~> 5.3.0'
-gem 'jquery-rails'
-gem 'sassc-rails'
+gem "bootstrap", "~> 5.3.0"
+gem "jquery-rails"
+gem "sassc-rails"
 
 # 環境変数を使用
-gem 'dotenv-rails'
+gem "dotenv-rails"
 
 # 日本語化
 gem "rails-i18n", "~> 7.0.0"
@@ -74,10 +74,10 @@ group :development do
   # gem "spring"
 
   #rubocop追加
-  gem 'rubocop', require: false
-  gem 'rubocop-performance', require: false
-  gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec', require: false
+  gem "rubocop", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
 
 end
 
