@@ -1,0 +1,29 @@
+<table>
+  <tr>
+    <th>店舗名</th>
+    <th>説明</th>
+    <th>価格帯</th>
+    <th>郵便番号</th>
+    <th>住所</th>
+    <th>電話番号</th>
+    <th>定休日</th>
+    <th>カテゴリID</th>
+  </tr>
+  <tr>
+    <td><%= @restaurant.name %></td>
+    <td><%= @restaurant.description %></td>
+    <td><%= @restaurant.lowest_price %>~<%= @restaurant.highest_price %></td>
+    <td><%= @restaurant.opening_hours %>~<%= @restaurant.closing_hours %></td>
+    <td><%= @restaurant.postal_code %></td>
+    <td><%= @restaurant.adress %></td>
+    <td><%= @restaurant.tel %></td>
+    <td><%= @restaurant.regular_holiday %></td>
+    <td><%= @restaurant.category_id %></td>
+  </tr>
+</table>
+
+
+
+
+
+<%= link_to "Back", restaurants_path %>
