@@ -55,6 +55,12 @@ gem "dotenv-rails"
 # 日本語化
 gem "rails-i18n", "~> 7.0.0"
 
+#管理者画面作成
+gem "rails_admin", ['>= 3.0.0.rc3', '< 4']
+
+#管理者権限管理
+gem "cancancan"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
@@ -86,3 +92,4 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+gem "cssbundling-rails"

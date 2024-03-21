@@ -18,13 +18,17 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # def after_sign_in_path_for(user)
-  #   products_path
-  # end
+  def after_sign_in_path_for(resource)
+    if user_signed_in? && current_user.role == "admin"
+      rails_admin_path
+    else
+      root_path
+    end
+  end
 
-  # def after_sign_out_path_for(user)
-  #   root_path
-  # end
+  def after_sign_out_path_for(resource)
+    new_user_session_path
+  end
 
   protected
 

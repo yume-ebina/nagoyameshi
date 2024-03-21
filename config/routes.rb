@@ -1,14 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :admins, :controllers => {
-    :sessions => 'admins/sessions'
-  }
 
-  devise_scope :admin do
-    get "dashboard", :to => "dashboard#index"
-    get "dashboard/login", :to => "admins/sessions#new"
-    post "dashboard/login", :to => "admins/sessions#create"
-    delete "dashboard/logout", :to => "admins/sessions#destroy"
-  end
+  
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions',
@@ -18,7 +12,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    root :to => "users/sessions#new"
+    root :to => "top#index"
     get "signup", :to => "users/registrations#new"
     get "verify", :to => "users/registrations#verify"
     get "login", :to => "users/sessions#new"
