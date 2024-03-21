@@ -11,9 +11,8 @@
       <ul class="navbar-nav ms-auto mr-5 mt-2">
       <% if user_signed_in? %>
       <!-- ログイン後 -->
-
         <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete } %>
         </li>
       <% else %>
       <!-- ログイン前 アドミンでは非表示 -->
