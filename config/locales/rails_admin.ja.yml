@@ -4,6 +4,7 @@ ja:
     # 全てのモデル記載
     models:
       user: ユーザー
+      category: カテゴリー
       restaurant: 店舗
       review: レビュー
       like: いいね
@@ -16,6 +17,8 @@ ja:
         kana: フリガナ
         gender: 性別
         birthday: 生年月日
+      category:
+        name: 名前
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
