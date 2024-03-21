@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  lowest_price: 1
+  highest_price: 1
+  opening_hours: MyString
+  closing_hours: MyString
+  postal_code: MyString
+  adress: MyString
+  tel: MyString
+  regular_holiday: MyString
+  category: one
+
+two:
+  name: MyString
+  description: MyText
+  lowest_price: 1
+  highest_price: 1
+  opening_hours: MyString
+  closing_hours: MyString
+  postal_code: MyString
+  adress: MyString
+  tel: MyString
+  regular_holiday: MyString
+  category: two
