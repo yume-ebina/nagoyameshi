@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users, :controllers => {
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    root :to => "users/sessions#new"
+    root :to => "top#index"
     get "signup", :to => "users/registrations#new"
     get "verify", :to => "users/registrations#verify"
     get "login", :to => "users/sessions#new"
