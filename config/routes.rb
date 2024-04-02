@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users, :controllers => {
@@ -18,4 +16,6 @@ Rails.application.routes.draw do
     get "login", :to => "users/sessions#new"
     delete "logout", :to => "users/sessions#destroy"
   end
+
+  resources :restaurants, only: [:index, :show]
 end
