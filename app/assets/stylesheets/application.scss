@@ -1,4 +1,46 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+
 @import "bootstrap";
-@import "nagoyameshi.scss";
-@import "app.scss";
+@import "nagoyameshi";
+
+body {
+  margin: 0;
+  font-family: Nunito, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #212529;
+  text-align: left;
+  background-color: #f8fafc;
+}
+
+h3,
+.h3 {
+  font-size: 1.575rem;
+}
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: 0.32rem;
+  padding-bottom: 0.32rem;
+  margin-right: 1rem;
+  font-size: 1.125rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(2.19rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-bottom: 15px;
+}

@@ -21,7 +21,8 @@ module Nagoyameshi
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
     # バリデーションエラーが発生したときに'field_with_errors'というclassを付加しない
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
 
@@ -35,6 +36,5 @@ module Nagoyameshi
     #タイムゾーン設定
     config.time_zone = "Tokyo"
     config.active_record.default_timezone = :local
-
   end
 end
