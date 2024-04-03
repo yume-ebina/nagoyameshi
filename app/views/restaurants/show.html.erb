@@ -1,8 +1,9 @@
-<table>
+<table class="table">
   <tr>
     <th>店舗名</th>
     <th>説明</th>
     <th>価格帯</th>
+    <th>営業時間</th>
     <th>郵便番号</th>
     <th>住所</th>
     <th>電話番号</th>
@@ -18,12 +19,34 @@
     <td><%= @restaurant.adress %></td>
     <td><%= @restaurant.tel %></td>
     <td><%= @restaurant.regular_holiday %></td>
-    <td><%= @restaurant.category_id %></td>
+    <td><%= @restaurant.category.name %></td>
   </tr>
 </table>
 
+<div class="w-50 mt-5">
+<p class="fs-6 fw-bold">レビュー</p>
+  <% @reviews.each do |review| %>
+  <div class="">
+    <p class="review-score-color"><%= score_on_star(review.score) %></p>
+    <p class="fs-7"><%= review.content %></p>
+    <p class="fs-7"><%= review.user.name %></p>
+    <label><%= review.created_at.strftime('%Y/%m/%d') %></label>
+  </div>
+  <% end %>
+</div>
 
-
-
+<% if user_signed_in? %>
+  <div class="w-50">
+    <div class="">
+      <%= form_with model: @review, url: restaurant_reviews_path(@restaurant) do |f| %>
+      <p class="fs-6 fw-bold">評価</p>
+        <%= f.select :score, @star_repeat_select, {}, class: "form-control m-2 review-score-color" %>
+        <p class="fs-6 fw-bold">レビュー内容</p>
+        <%= f.text_area :content, class: "form-control m-2" %>
+        <%= f.submit "レビューを追加" , class:"btn nagoyameshi-submit-button ml-2"%>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <%= link_to "Back", restaurants_path %>
