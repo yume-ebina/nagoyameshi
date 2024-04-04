@@ -8,16 +8,17 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# User.create!(
-#   email: ENV["ADMIN_EMAIL"],
-#   password: 'hogehoge',
-#   encrypted_password: 'hogehoge',
-#   name: 'テスト管理者',
-#   kana: 'カンリシャ',
-#   gender: 'female',
-#   birthday: '1999-12-24',
-#   role: 'admin'
-# )
+User.create!(
+  email: ENV["ADMIN_EMAIL"],
+  password: 'hogehoge',
+  encrypted_password: 'hogehoge',
+  name: 'テスト管理者',
+  kana: 'カンリシャ',
+  gender: 'female',
+  birthday: '1999-12-24',
+  role: 'admin',
+  confirmed_at: Time.now
+)
 
 categories = ["和食","イタリアン","中華","フレンチ","韓国料理","タイ料理","ラーメン"]
 categories.each do |category|

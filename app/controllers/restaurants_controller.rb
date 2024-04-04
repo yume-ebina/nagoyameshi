@@ -5,9 +5,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    @reviews = @restaurant.reviews_with_id
-    @review = @reviews.new
-    @star_repeat_select = Review.star_repeat_select
+    @reviews = Review.where(restaurant_id: @restaurant.id)
   end
 
 end
