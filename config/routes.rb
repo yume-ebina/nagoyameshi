@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants, only: [:index, :show] do
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create], module: :restaurants
   end
+
+  get '*path', controller: 'application', action: 'render_404'
+
 end
