@@ -26,12 +26,12 @@
 <div class="w-50 mt-5">
 <p class="fs-6 fw-bold">レビュー</p>
   <% @reviews.each do |review| %>
-  <div class="">
-    <p class="review-score-color"><%= score_on_star(review.score) %></p>
-    <p class="fs-7"><%= review.content %></p>
-    <p class="fs-7"><%= review.user.name %></p>
-    <label><%= review.created_at.strftime('%Y/%m/%d') %></label>
-  </div>
+    <div class="">
+      <p class="review-score-color"><%= score_on_star(review.score) %></p>
+      <p class="fs-7"><%= review.content %></p>
+      <p class="fs-7"><%= review.user.name %></p>
+      <label><%= review.created_at.strftime('%Y/%m/%d') %></label>
+    </div>
   <% end %>
 </div>
 
