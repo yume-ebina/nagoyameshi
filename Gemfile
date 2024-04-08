@@ -54,6 +54,7 @@ gem "dotenv-rails"
 
 # 日本語化
 gem "rails-i18n", "~> 7.0.0"
+gem 'enum_help'
 
 #管理者画面作成
 gem "rails_admin", ['>= 3.0.0.rc3', '< 4']

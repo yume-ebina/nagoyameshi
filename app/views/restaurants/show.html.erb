@@ -1,13 +1,14 @@
-<table>
+<table class="table">
   <tr>
     <th>店舗名</th>
     <th>説明</th>
     <th>価格帯</th>
+    <th>営業時間</th>
     <th>郵便番号</th>
     <th>住所</th>
     <th>電話番号</th>
     <th>定休日</th>
-    <th>カテゴリID</th>
+    <th>カテゴリ</th>
   </tr>
   <tr>
     <td><%= @restaurant.name %></td>
@@ -18,12 +19,38 @@
     <td><%= @restaurant.adress %></td>
     <td><%= @restaurant.tel %></td>
     <td><%= @restaurant.regular_holiday %></td>
-    <td><%= @restaurant.category_id %></td>
+    <td><%= @restaurant.category.name %></td>
   </tr>
 </table>
 
+<div class="w-50 mt-5">
+  <p class="fs-6 fw-bold">レビュー</p>
+  <% @reviews.each do |review| %>
+    <div>
+      <p class="review-score-color">
+        <% Review.scores[review.score].to_i.times.each do |i| %>
+          ★
+        <% end %>
+      </p>
+      <p class="fs-7"><%= review.content %></p>
+      <p class="fs-7"><%= review.user.name %></p>
+      <p><%= l review.created_at, format: :normal %></p>
+    </div>
+  <% end %>
+</div>
 
-
-
+<% if user_signed_in? %>
+  <div class="w-50">
+    <div>
+      <%= form_with model: Review.new, url: restaurant_reviews_path(@restaurant) do |f| %>
+        <p class="fs-6 fw-bold">評価</p>
+        <%= f.select :score, Review.scores_i18n.keys.map {|key| [I18n.t("activerecord.enums.review.score.#{key}"), key]}, {}, class: "form-control m-2 review-score-color" %>
+        <p class="fs-6 fw-bold">レビュー内容</p>
+        <%= f.text_area :content, class: "form-control m-2" %>
+        <%= f.submit "レビューを追加" , class:"btn nagoyameshi-submit-button ml-2"%>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <%= link_to "Back", restaurants_path %>
