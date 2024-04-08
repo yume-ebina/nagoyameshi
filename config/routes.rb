@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants, only: [:index, :show] do
+    resource :likes, only: [:create, :destroy]
     resources :reviews, only: [:create], module: :restaurants
   end
 
