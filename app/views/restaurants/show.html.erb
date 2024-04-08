@@ -23,6 +23,17 @@
   </tr>
 </table>
 
+
+<!-- お気に入りボタン -->
+<div>
+  <% if current_user.liked?(@restaurant) %>
+    <%= button_to 'お気に入りを外す', restaurant_likes_path(@restaurant), {method: :delete, class: "btn nagoyameshi-unlike-button"} %>
+  <% else %>
+    <%= button_to 'お気に入り', restaurant_likes_path(@restaurant), method: :post, class:"btn nagoyameshi-like-button"  %>
+  <% end %>
+</div>
+
+<!-- レビュー一覧 -->
 <div class="w-50 mt-5">
   <p class="fs-6 fw-bold">レビュー</p>
   <% @reviews.each do |review| %>
@@ -39,6 +50,7 @@
   <% end %>
 </div>
 
+<!-- レビュー投稿フォーム -->
 <% if user_signed_in? %>
   <div class="w-50">
     <div>
