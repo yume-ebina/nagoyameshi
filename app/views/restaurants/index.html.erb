@@ -1,14 +1,28 @@
-<table>
-  <tr>
-    <th>店舗名</th>
-    <th>カテゴリ</th>
-    <th>詳細</th>
-  </tr>
-<% @restaurants.each do |restaurant| %>
-  <tr>
-    <td><%= restaurant.name %></td>
-    <td><%= restaurant.category_id %></td>
-    <td><%= link_to "Show", restaurant_path(restaurant) %></td>
-  </tr>
-<% end %>
-</table>
+<div class="row">
+  <div class="col-2">
+    <%= render partial: 'layouts/sidebar', locals: {categories: @categories} %>
+  </div>
+  <div class="col-9">
+    <div class="container">
+      <% if @category.present? %>
+        <%= link_to "トップ", "/" %> > <%= @category.name %>
+        <h1><%= @category.name %>の商品一覧<%= @restaurants.count %>件</h1>
+      <% end %>
+    </div>
+    <table class="table">
+      <tr>
+        <th>店舗名</th>
+        <th>カテゴリ</th>
+        <th>詳細</th>
+      </tr>
+      <% @restaurants.each do |restaurant| %>
+        <tr>
+          <td><%= restaurant.name %></td>
+          <td><%= restaurant.category.name %></td>
+          <td><%= link_to "Show", restaurant_path(restaurant) %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= paginate @restaurants %>
+  </div>
+</div>

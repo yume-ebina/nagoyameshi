@@ -1,0 +1,8 @@
+<div class="container">
+  <h6>カテゴリー</h6>
+  <%= categories.each do |category| %>
+    <label class="nagoyameshi-sidebar-category-label">
+      <%= link_to category.name, restaurants_path(category: category.id) %>
+    </label>
+  <% end %>
+</div>
