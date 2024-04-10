@@ -4,11 +4,20 @@
   </div>
   <div class="col-9">
     <div class="container">
+      <%= link_to "トップ", "/restaurants" %> >
+      <% keys = nil %>
       <% params['category_ids'].to_s.split(',').each do |category_id| %>
-        <%= link_to "トップ", "/restaurants" %> > <%= I18n.t("enums.restaurant.category_id.#{category_id}") %>
-        <h1><%= I18n.t("enums.restaurant.category_id.#{category_id}") %>の店舗一覧<%= @restaurants.count %>件</h1>
+        <%= I18n.t("enums.restaurant.category_id.#{category_id}") %>
+        <% keys = category_id %>
       <% end %>
+      <h1>
+        <% if keys.present? %>
+          <%= I18n.t("enums.restaurant.category_id.#{keys}") %>の
+        <% end %>
+        店舗一覧<%= @restaurants.total_count %>件
+      </h1>
     </div>
+
     <table class="table">
       <tr>
         <th>店舗名</th>

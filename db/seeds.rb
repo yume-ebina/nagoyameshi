@@ -21,13 +21,6 @@ User.create!(
   confirmation_token: nil
 )
 
-# categories = [*1..7]
-# categories.each do |category|
-#   Category.create(
-#     name: categories[array_number]
-#   )
-#   array_number += 1
-# end
 pp 'start seed'
 
 30.times.each do |i|
