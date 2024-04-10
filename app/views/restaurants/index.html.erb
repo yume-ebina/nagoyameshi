@@ -1,14 +1,37 @@
-<table>
-  <tr>
-    <th>店舗名</th>
-    <th>カテゴリ</th>
-    <th>詳細</th>
-  </tr>
-<% @restaurants.each do |restaurant| %>
-  <tr>
-    <td><%= restaurant.name %></td>
-    <td><%= restaurant.category_id %></td>
-    <td><%= link_to "Show", restaurant_path(restaurant) %></td>
-  </tr>
-<% end %>
-</table>
+<div class="row">
+  <div class="col-2">
+    <%= render partial: 'layouts/sidebar' %>
+  </div>
+  <div class="col-9">
+    <div class="container">
+      <%= link_to "トップ", "/restaurants" %> >
+      <% keys = nil %>
+      <% params['category_ids'].to_s.split(',').each do |category_id| %>
+        <%= I18n.t("enums.restaurant.category_id.#{category_id}") %>
+        <% keys = category_id %>
+      <% end %>
+      <h1>
+        <% if keys.present? %>
+          <%= I18n.t("enums.restaurant.category_id.#{keys}") %>の
+        <% end %>
+        店舗一覧<%= @restaurants.total_count %>件
+      </h1>
+    </div>
+
+    <table class="table">
+      <tr>
+        <th>店舗名</th>
+        <th>カテゴリ</th>
+        <th>詳細</th>
+      </tr>
+      <% @restaurants.each do |restaurant| %>
+        <tr>
+          <td><%= restaurant.name %></td>
+          <td><%= restaurant.category_id_i18n %></td>
+          <td><%= link_to "Show", restaurant_path(restaurant) %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= paginate @restaurants %>
+  </div>
+</div>
