@@ -21,8 +21,6 @@ User.create!(
   confirmation_token: nil
 )
 
-pp 'start seed'
-
 30.times.each do |i|
   restaurant_name = Faker::Music::RockBand.name
   postal_code = Faker::Address.postcode
