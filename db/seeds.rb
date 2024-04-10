@@ -9,42 +9,34 @@
 #   end
 
 User.create!(
-  email: ENV["ADMIN_EMAIL"],
+  email: "cityeventa@gmail.com",
   password: 'hogehoge',
-  encrypted_password: 'hogehoge',
+  password_confirmation: 'hogehoge',
   name: 'テスト管理者',
   kana: 'カンリシャ',
   gender: 'female',
   birthday: '1999-12-24',
   role: 'admin',
-  confirmed_at: Time.now
+  confirmed_at: Time.current,
+  confirmation_token: nil
 )
 
-categories = ["和食","イタリアン","中華","フレンチ","韓国料理","タイ料理","ラーメン"]
-categories.each do |category|
-  Category.create(
-    name: category
-  )
-end
-
-restaurant_ids = [*1..30]
-category_ids = [*1..7,*1..12]
-array_number = 0
-
-restaurant_ids.each do
+30.times.each do |i|
   restaurant_name = Faker::Music::RockBand.name
-  Restaurant.create(
+  postal_code = Faker::Address.postcode
+  tel = Faker::PhoneNumber.cell_phone
+  r = Restaurant.new(
     name: restaurant_name,
     description: restaurant_name,
-    lowest_price: restaurant_ids[array_number],
-    highest_price: restaurant_ids[array_number],
-    opening_hours: restaurant_ids[array_number],
-    closing_hours: restaurant_ids[array_number],
-    postal_code: restaurant_ids[array_number],
+    lowest_price: rand(1..3)*1000,
+    highest_price: rand(3..7)*1000,
+    opening_hours: rand(6..10),
+    closing_hours: rand(15..23),
+    postal_code: postal_code,
     adress: restaurant_name,
-    tel: "000-000-000",
+    tel: tel,
     regular_holiday: "なし",
-    category_id: category_ids[array_number]
+    category_id: rand(1..7)
   )
-  array_number += 1
+  r.save!
 end

@@ -19,17 +19,21 @@
     <td><%= @restaurant.adress %></td>
     <td><%= @restaurant.tel %></td>
     <td><%= @restaurant.regular_holiday %></td>
-    <td><%= @restaurant.category.name %></td>
+    <td><%= @restaurant.category_id_i18n %></td>
   </tr>
 </table>
 
 
 <!-- お気に入りボタン -->
 <div>
-  <% if current_user.liked?(@restaurant) %>
-    <%= button_to 'お気に入りを外す', restaurant_likes_path(@restaurant), {method: :delete, class: "btn nagoyameshi-unlike-button"} %>
+  <% if user_signed_in? %>
+    <% if current_user.liked?(@restaurant) %>
+      <%= button_to 'お気に入りを外す', restaurant_likes_path(@restaurant), {method: :delete, class: "btn nagoyameshi-unlike-button"} %>
+    <% else %>
+      <%= button_to 'お気に入り', restaurant_likes_path(@restaurant), method: :post, class:"btn nagoyameshi-like-button"  %>
+    <% end %>
   <% else %>
-    <%= button_to 'お気に入り', restaurant_likes_path(@restaurant), method: :post, class:"btn nagoyameshi-like-button"  %>
+    <p>ログインするとお気に入りボタンが押せます</p>
   <% end %>
 </div>
 

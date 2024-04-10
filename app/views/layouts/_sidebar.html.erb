@@ -1,0 +1,6 @@
+<div class="container">
+  <h6>カテゴリー</h6>
+  <% Restaurant.category_ids_i18n.each do |key, name| %>
+    <%= link_to name, restaurants_path(category_ids: key), class: "d-flex flex-column" %>
+  <% end %>
+</div>

@@ -11,7 +11,7 @@ class CreateRestaurants < ActiveRecord::Migration[7.1]
       t.string :adress
       t.string :tel
       t.string :regular_holiday
-      t.references :category, null: false, foreign_key: true
+      t.integer :category_id, null: false
 
       t.timestamps
     end
