@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-2">
-    <%= render partial: 'layouts/sidebar', locals: {categories: @categories} %>
+    <%= render partial: 'layouts/sidebar' %>
   </div>
   <div class="col-9">
     <div class="container">
-      <% if @category.present? %>
-        <%= link_to "トップ", "/" %> > <%= @category.name %>
-        <h1><%= @category.name %>の商品一覧<%= @restaurants.count %>件</h1>
+      <% params['category_ids'].to_s.split(',').each do |category_id| %>
+        <%= link_to "トップ", "/restaurants" %> > <%= I18n.t("enums.restaurant.category_id.#{category_id}") %>
+        <h1><%= I18n.t("enums.restaurant.category_id.#{category_id}") %>の店舗一覧<%= @restaurants.count %>件</h1>
       <% end %>
     </div>
     <table class="table">
@@ -18,7 +18,7 @@
       <% @restaurants.each do |restaurant| %>
         <tr>
           <td><%= restaurant.name %></td>
-          <td><%= restaurant.category.name %></td>
+          <td><%= restaurant.category_id_i18n %></td>
           <td><%= link_to "Show", restaurant_path(restaurant) %></td>
         </tr>
       <% end %>

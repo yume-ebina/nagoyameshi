@@ -1,17 +1,15 @@
 class Restaurant < ApplicationRecord
-  belongs_to :category
+  # belongs_to :category
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
 
-  PER = 10
-
-  scope :display_list, -> (category, page) {
-    if category != "none"
-      where(category_id: category).page(page).per(PER)
-    else
-      page(page).per(PER)
-    end
-  }
-
+  enum category_id: {
+    japanese: 1,
+    italian: 2,
+    chinese: 3,
+    french: 4,
+    korean: 5,
+    thai: 6,
+    ramen: 7, }
 end
