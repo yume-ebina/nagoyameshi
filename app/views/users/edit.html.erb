@@ -27,11 +27,10 @@
           <div class="collapse editUserName">
             <%=
               f.text_field :name,
-              class: "form-control #{"is-invalid" if @user.errors.messages[:name].present? } ",
-              value: @user.name,
+              class: "form-control",
               autofocus: "true",
-              required: "",
-              autocomplete: "name",
+              required: "true",
+              autocomplete: "on",
               placeholder: "名前を入力"
             %>
             <%= f.submit "保存", class: "btn nagoyameshi-submit-button mt-2 w-25" %>
@@ -61,11 +60,10 @@
           <div class="collapse editUserKana">
             <%=
               f.text_field :kana,
-              class: "form-control #{"is-invalid" if @user.errors.messages[:kana].present? } ",
-              value: @user.kana,
+              class: "form-control",
               autofocus: "true",
-              required: "",
-              autocomplete: "kana",
+              required: "true",
+              autocomplete: "on",
               placeholder: "フリガナを入力"
             %>
             <%= f.submit "保存", class: "btn nagoyameshi-submit-button mt-2 w-25" %>
@@ -156,11 +154,10 @@
           <div class="collapse editUserMail">
             <%=
               f.email_field :email,
-              class: "form-control #{"is-invalid" if @user.errors.messages[:email].present? }",
+              class: "form-control",
               autofocus: "true",
-              required: "",
-              value: @user.email,
-              autocomplete: "email",
+              required: "true",
+              autocomplete: "on",
               placeholder: "メールアドレスを入力"
             %>
             <%= f.submit "保存", class: "btn nagoyameshi-submit-button mt-2 w-25" %>
