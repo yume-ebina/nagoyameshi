@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def favorite
+    @favorite_restaurants = @user.restaurants.page(params[:page])
   end
 
   def reserve

@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>お気に入り店舗一覧 <%= @favorite_restaurants.count %>件</h1>
+
+    <table class="table">
+      <tr>
+        <th>店舗名</th>
+        <th>カテゴリ</th>
+        <th>詳細</th>
+      </tr>
+      <% @favorite_restaurants.each do |restaurant| %>
+        <tr>
+          <td><%= restaurant.name %></td>
+          <td><%= restaurant.category_id_i18n %></td>
+          <td><%= link_to "Show", restaurant_path(restaurant) %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= paginate @favorite_restaurants %>
+  </div>
+</div>
