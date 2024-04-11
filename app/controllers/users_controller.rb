@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update_without_password(user_params)
-    redirect_to mypage_users_url
+    redirect_to mypage_edit_users_url
   end
 
   def mypage
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.permit(:name, :kana, :gender,:birthday,:email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :kana, :gender, :birthday, :email, :password, :password_confirmation)
     end
 
     def set_user

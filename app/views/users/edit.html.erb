@@ -9,17 +9,17 @@
 
       <hr>
 
-      <%= form_with url: mypage_users_path, local: true, method: :put do |f| %>
+      <%= form_with model:@user, url: mypage_users_path, local: true, method: :put do |f| %>
 
         <div class="form-group">
           <div class="d-flex justify-content-between">
-            <%= f.label :name, "氏名", class: "text-md-left samuraimart-edit-user-info-label" %>
+            <%= f.label :name, "氏名", class: "text-md-left nagoyameshi-edit-user-info-label" %>
             <span onclick="switchEditUserInfo('.userName', '.editUserName', '.userNameEditLabel');" class="userNameEditLabel user-edit-label">
               編集
             </span>
           </div>
           <div class="collapse show userName">
-            <h1 class="samuraimart-edit-user-info-value"><%= @user.name %></h1>
+            <h1 class="nagoyameshi-edit-user-info-value"><%= @user.name %></h1>
           </div>
           <div class="collapse editUserName">
             <%=
@@ -32,7 +32,7 @@
               placeholder: "名前を入力"
             %>
 
-            <%= f.submit "保存", class: "btn samuraimart-submit-button mt-3 w-25" %>
+            <%= f.submit "保存", class: "btn nagoyameshi-submit-button mt-2 w-25" %>
 
             <% if @user.errors.messages[:name].present? %>
             <span class="invalid-feedback" role="alert">
@@ -46,13 +46,13 @@
 
         <div class="form-group">
           <div class="d-flex justify-content-between">
-            <%= f.label :name, "フリガナ", class: "text-md-left samuraimart-edit-user-info-label" %>
+            <%= f.label :name, "フリガナ", class: "text-md-left nagoyameshi-edit-user-info-label" %>
             <span onclick="switchEditUserInfo('.userKana', '.editUserKana', '.userKanaEditLabel');" class="userKanaEditLabel user-edit-label">
               編集
             </span>
           </div>
           <div class="collapse show userKana">
-            <h1 class="samuraimart-edit-user-info-value"><%= @user.kana %></h1>
+            <h1 class="nagoyameshi-edit-user-info-value"><%= @user.kana %></h1>
           </div>
           <div class="collapse editUserKana">
             <%=
@@ -65,11 +65,11 @@
               placeholder: "フリガナを入力"
             %>
 
-            <%= f.submit "保存", class: "btn samuraimart-submit-button mt-3 w-25" %>
+            <%= f.submit "保存", class: "btn nagoyameshi-submit-button mt-2 w-25" %>
 
             <% if @user.errors.messages[:kana].present? %>
             <span class="invalid-feedback" role="alert">
-              <strong>氏名を入力してください</strong>
+              <strong>フリガナを入力してください</strong>
             </span>
             <% end %>
           </div>
@@ -79,19 +79,23 @@
 
         <div class="form-group">
           <div class="d-flex justify-content-between">
-            <%= f.label :gender, "性別", class: "text-md-left samuraimart-edit-user-info-label" %>
+            <%= f.label :gender, "性別", class: "text-md-left nagoyameshi-edit-user-info-label" %>
             <span onclick="switchEditUserInfo('.userGender', '.editUserGender', '.userGenderEditLabel');" class="userGenderEditLabel user-edit-label">
               編集
             </span>
           </div>
           <div class="collapse show userGender">
-            <h1 class="samuraimart-edit-user-info-value"><%= @user.gender %></h1>
+            <h1 class="nagoyameshi-edit-user-info-value"><%= @user.gender %></h1>
           </div>
           <div class="collapse editUserGender">
-            <%= f.radio_button :gender, :male, checked: true %>
-            <%= f.label :gender, "男性", {value: :male, style: "display: inline-block; margin-right: 30px"} %>
-            <%= f.radio_button :gender, :female %>
-            <%= f.label :gender, "女性", {value: :female, style: "display: inline-block;"} %>
+            <div>
+              <%= f.radio_button :gender, :male, checked: true %>
+              <%= f.label :gender, "男性", {value: :male, style: "display: inline-block; margin-right: 30px"} %>
+              <%= f.radio_button :gender, :female %>
+              <%= f.label :gender, "女性", {value: :female, style: "display: inline-block;"} %>
+            </div>
+            <%= f.submit "保存", class: "btn nagoyameshi-submit-button mt-3 w-25" %>
+
             <% if @user.errors.messages[:gender].present? %>
             <span class="nagoyameshi-error-message">
               <strong><%= @user.errors.full_messages_for(:gender).first %></strong>
@@ -104,18 +108,21 @@
 
         <div class="form-group">
           <div class="d-flex justify-content-between">
-            <%= f.label :birthday, "生年月日", class: "text-md-left samuraimart-edit-user-info-label" %>
+            <%= f.label :birthday, "生年月日", class: "text-md-left nagoyameshi-edit-user-info-label" %>
             <span onclick="switchEditUserInfo('.userBirthday', '.editUserBirthday', '.userBirthdayEditLabel');" class="userBirthdayEditLabel user-edit-label">
               編集
             </span>
           </div>
           <div class="collapse show userBirthday">
-            <h1 class="samuraimart-edit-user-info-value"><%= @user.birthday %></h1>
+            <h1 class="nagoyameshi-edit-user-info-value"><%= @user.birthday %></h1>
           </div>
           <div class="collapse editUserBirthday">
-            <%= f.date_select :birthday, {start_year: 1950, end_year: (Time.now.year - 5),
-            include_blank: true, use_two_digit_numbers: true},
-            {class: "nagoyameshi-login-input"}%>
+            <div>
+              <%= f.date_select :birthday, {start_year: 1950, end_year: (Time.now.year - 5),
+              include_blank: true, use_two_digit_numbers: true},
+              {class: "nagoyameshi-login-input"}%>
+            </div>
+            <%= f.submit "保存", class: "btn nagoyameshi-submit-button mt-3 w-25" %>
 
             <% if @user.errors.messages[:birthday].present? %>
             <span class="nagoyameshi-error-message">
@@ -129,13 +136,13 @@
 
         <div class="form-group">
           <div class="d-flex justify-content-between">
-            <%= f.label :email, "メールアドレス", class: "text-md-left samuraimart-edit-user-info-label" %>
+            <%= f.label :email, "メールアドレス", class: "text-md-left nagoyameshi-edit-user-info-label" %>
             <span onclick="switchEditUserInfo('.userMail', '.editUserMail', '.userMailEditLabel');" class="userMailEditLabel user-edit-label">
               編集
             </span>
           </div>
           <div class="collapse show userMail">
-            <h1 class="samuraimart-edit-user-info-value"><%= @user.email %></h1>
+            <h1 class="nagoyameshi-edit-user-info-value"><%= @user.email %></h1>
           </div>
           <div class="collapse editUserMail">
             <%=
@@ -148,7 +155,7 @@
               placeholder: "メールアドレスを入力"
             %>
 
-            <%= f.submit "保存", class: "btn samuraimart-submit-button mt-3 w-25" %>
+            <%= f.submit "保存", class: "btn nagoyameshi-submit-button mt-2 w-25" %>
 
             <% if @user.errors.messages[:email].present? %>
             <span class="invalid-feedback" role="alert">
