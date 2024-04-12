@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  
-
   resource :users, only: [:edit, :update] do
     collection do
       get "mypage", :to => "users#mypage"
