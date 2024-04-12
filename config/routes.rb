@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
+  resource :users, only: [:edit, :update] do
+    collection do
+      get "mypage", :to => "users#mypage"
+      get "mypage/edit", :to => "users#edit"
+      put "mypage", :to => "users#update"
+      get "mypage/favorite", :to => "users#favorite"
+      get "mypage/reserve", :to => "users#reserve"
+    end
+  end
+
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions',
