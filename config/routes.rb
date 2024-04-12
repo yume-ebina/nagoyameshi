@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
+  
+
   resource :users, only: [:edit, :update] do
     collection do
       get "mypage", :to => "users#mypage"
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:index, :show] do
     resource :likes, only: [:create, :destroy]
     resources :reviews, only: [:create], module: :restaurants
+    resources :reservations
   end
 
   get '*path', controller: 'application', action: 'render_404'
