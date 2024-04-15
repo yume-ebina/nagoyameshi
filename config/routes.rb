@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       post "mypage/token", :to => "users#token"
       get "registration", :to => "users#registration"
       post "registration", :to => "users#paid_decision"
+      get "premium_cancel", :to => "users#premium_cancel"
+      get "unsubscribe", :to => "users#unsubscribe"
     end
   end
 

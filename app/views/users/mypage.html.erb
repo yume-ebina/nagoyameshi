@@ -1,7 +1,7 @@
 <div class="container d-flex justify-content-center mt-3">
   <div class="w-50">
     <h1>マイページ</h1>
-    <% if @user.premium_end_date < Time.now %>
+    <% if @user.premium_end_date == nil || @user.premium_end_date < Time.now %>
       <%= link_to 'プレミアムプランにアップグレード', registration_users_path %>
     <% end %>
     <hr>

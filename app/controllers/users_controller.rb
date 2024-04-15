@@ -28,17 +28,17 @@ class UsersController < ApplicationController
     @count = 0
     card_info = {}
 
-    if @user.token != ""
-      result = Payjp::Customer.retrieve(@user.token).cards.all(limit: 1).data[0]
-      @count = Payjp::Customer.retrieve(@user.token).cards.all.count
+    result = Payjp::Customer.retrieve(@user.token).cards.all(limit: 1).data[0]
+    @count = Payjp::Customer.retrieve(@user.token).cards.all.count
 
-      card_info[:brand] = result.brand
-      card_info[:exp_month] = result.exp_month
-      card_info[:exp_year] = result.exp_year
-      card_info[:last4] = result.last4
-    end
+    card_info = {
+      brand:     result.brand,
+      exp_month: result.exp_month,
+      exp_year:  result.exp_year,
+      last4:     result.last4
+    }
 
-    @card = card_info
+    return @card = card_info if @user.token.present?
   end
 
   def token
@@ -78,6 +78,9 @@ class UsersController < ApplicationController
                         )
     @user.update(premium_end_date: Time.now.next_month)
     redirect_to mypage_users_url
+  end
+
+  def premium_cancel
   end
 
   private
