@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get "admins/aggregate", :to => "admins#aggregate"
 
   resource :users, only: [:edit, :update] do
     collection do
