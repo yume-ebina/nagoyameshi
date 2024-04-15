@@ -73,6 +73,9 @@ gem 'enum_help'
 #予約用カレンダー
 gem "simple_calendar", "~> 2.0"
 
+# 課金システム用
+gem "payjp"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]

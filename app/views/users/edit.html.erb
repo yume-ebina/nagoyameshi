@@ -171,6 +171,11 @@
         </div>
         <hr>
       <% end %>
+      <% if @user.premium_end_date.present? && @user.premium_end_date > Time.now %>
+        <%= link_to 'プレミアムプランを停止する', premium_cancel_users_path %>
+      <% end %>
+      <%= link_to '退会する', unsubscribe_users_path %>
+
     </div>
   </div>
 </div>
