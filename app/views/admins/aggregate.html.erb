@@ -26,6 +26,6 @@
   </tr>
   <tr>
     <th>月間売上</th>
-    <td>¥<%= @effective_premium_user * 330 %></td>
+    <td>¥<%= number_to_currency(@effective_premium_user * 330) %></td>
   </tr>
 </table>
