@@ -9,6 +9,10 @@ class Restaurant < ApplicationRecord
   validate :image_content_type
   validate :image_size
 
+  # rails_admin do
+  #   field :image, :active_storage
+  # end
+
   #ファイル形式バリデーション
   def image_content_type
     if image.attached? && !image.content_type.in?(%w[image/jpeg image/png])
