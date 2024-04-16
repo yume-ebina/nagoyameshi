@@ -1,27 +1,32 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm nagoyameshi-header-container px-4">
     <%= link_to "Nagoyameshi", root_path, class: "navbar-brand" %>
-      <ul class="navbar-nav ms-auto mr-5 mt-2">
-      <% if user_signed_in? %>
+    <ul class="navbar-nav ms-auto mr-5 mt-2">
       <!-- ログイン後 -->
+      <% if user_signed_in? && current_user.role == "admin" %>
+        <!-- 管理者にのみ表示 -->
         <li class="nav-item mr-5">
-          <%= link_to mypage_users_path, class: "nav-link" do %>マイページ<i class="fa-solid fa-user"></i><% end %>
-        </li>
-      <% else %>
-      <!-- ログイン前 アドミンでは非表示 -->
-        <% if resource_is_user? %>
-        <li class="nav-item mr-5">
-          <%= link_to new_user_registration_path, class: "nav-link" do %>
-            <label>新規登録</label>
-          <% end %>
+          <%= link_to "管理ページ", rails_admin_path, class: "nav-link"%>
         </li>
         <li class="nav-item mr-5">
-          <%= link_to login_path, class: "nav-link" do %>
-            <label>ログイン</label>
-          <% end %>
+          <%= link_to "集計ページ", admins_aggregate_path, class: "nav-link" %>
         </li>
-        <% end %>
-        <hr>
       <% end %>
+      <!-- 一般ユーザー -->
+      <% if user_signed_in? %>
+      <li class="nav-item mr-5">
+        <%= link_to mypage_users_path, class: "nav-link" do %>マイページ<i class="fa-solid fa-user"></i><% end %>
+      </li>
+    <% else %>
+
+    <!-- ログイン前 -->
+    <li class="nav-item mr-5">
+      <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
+    </li>
+    <li class="nav-item mr-5">
+      <%= link_to "ログイン", login_path, class: "nav-link" %>
+    </li>
+    <% end %>
+    <hr>
   </nav>
 </header>

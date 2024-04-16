@@ -288,6 +288,7 @@ label {
   position: relative;
   z-index: 2;
   margin-top: 200px;
+  justify-content: center;
 }
 
 .top-title {
@@ -315,11 +316,4 @@ label {
 
 .links {
   color: #d66b00;
-}
-
-//マイページ
-@media screen and (max-width: 979px) {
-  .pcview {
-    display: none;
-  }
 }
