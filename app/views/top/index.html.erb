@@ -1,7 +1,10 @@
 <% if user_signed_in? && current_user.role == "admin" %>
   <!-- 管理者にのみ表示 -->
   <%= link_to rails_admin_path do %>
-    <button type="button" class="btn btn-primary">管理者用ページはこちら！</button>
+    <button type="button" class="btn btn-primary">管理ページはこちら！</button>
+  <% end %>
+  <%= link_to admins_aggregate_path do %>
+    <button type="button" class="btn btn-primary">集計ページはこちら！</button>
   <% end %>
 <% end %>
 

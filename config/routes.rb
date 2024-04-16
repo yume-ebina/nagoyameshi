@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get "admins/aggregate", :to => "admins#aggregate"
 
   resource :users, only: [:edit, :update] do
     collection do
@@ -8,6 +9,12 @@ Rails.application.routes.draw do
       put "mypage", :to => "users#update"
       get "mypage/favorite", :to => "users#favorite"
       get "mypage/reserve", :to => "users#reserve"
+      get "mypage/register_card", :to => "users#register_card"
+      post "mypage/token", :to => "users#token"
+      get "registration", :to => "users#registration"
+      post "registration", :to => "users#paid_decision"
+      get "premium_cancel", :to => "users#premium_cancel"
+      get "unsubscribe", :to => "users#unsubscribe"
     end
   end
 
@@ -30,6 +37,7 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:index, :show] do
     resource :likes, only: [:create, :destroy]
     resources :reviews, only: [:create], module: :restaurants
+    resources :reservations
   end
 
   get '*path', controller: 'application', action: 'render_404'

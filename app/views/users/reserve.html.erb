@@ -1,1 +1,55 @@
-<p>予約した店舗を一覧で確認するページです</p>
+<div class="container">
+  <div class="col-12 mt-3 text-center mx-auto">
+    <h3>予約一覧</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">予約日</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user_reservations.each do |user_reservation| %>
+          <td>
+            <%= user_reservation.day %>
+            <%= user_reservation.time %>
+          </td>
+          <td>
+            <%= link_to 'キャンセル', restaurant_reservation_path(user_reservation.restaurant_id, user_reservation.id), data: { turbo_method: :delete, turbo_confirm: "キャンセルしてよろしいですか？" } %>
+          </td>
+        </tr>
+        <% end %>
+        <% if @user_reservations.blank? %>
+          <tr>
+            <td>予約はありません。</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-12 mt-3 text-center mx-auto">
+    <h3>予約履歴</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">予約日</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @visit_historys.each do |visit_history| %>
+          <tr>
+            <td>
+              <%= visit_history.day %>
+              <%= visit_history.time %>
+            </td>
+          </tr>
+        <% end %>
+        <% if @visit_historys.blank? %>
+          <tr>
+            <td>来院履歴はありません。</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
