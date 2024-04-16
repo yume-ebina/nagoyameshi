@@ -4,7 +4,7 @@
   </div>
   <div class="col-9">
     <div class="container">
-      <%= link_to "トップ", "/restaurants" %> >
+      <%= link_to "店舗一覧", "/restaurants", class:"links text-decoration-none" %> >
       <% keys = nil %>
       <% params['category_ids'].to_s.split(',').each do |category_id| %>
         <%= I18n.t("enums.restaurant.category_id.#{category_id}") %>
@@ -21,14 +21,18 @@
     <table class="table">
       <tr>
         <th>店舗名</th>
-        <th>カテゴリ</th>
-        <th>詳細</th>
+        <th class="text-center">カテゴリ</th>
+        <th class="text-center">詳細</th>
       </tr>
       <% @restaurants.each do |restaurant| %>
         <tr>
           <td><%= restaurant.name %></td>
-          <td><%= restaurant.category_id_i18n %></td>
-          <td><%= link_to "Show", restaurant_path(restaurant) %></td>
+          <td class="text-center"><%= restaurant.category_id_i18n %></td>
+          <td class="text-center">
+            <%= link_to restaurant_path(restaurant), class:"links" do %>
+              <i class="fa-solid fa-chevron-right"></i>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </table>
