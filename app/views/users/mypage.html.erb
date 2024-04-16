@@ -2,121 +2,111 @@
   <div class="w-50">
     <h1>マイページ</h1>
     <% if @user.premium_end_date == nil || @user.premium_end_date < Time.now %>
-      <%= link_to 'プレミアムプランにアップグレード', registration_users_path %>
+      <%= link_to 'プレミアムプランにアップグレード', registration_users_path, class:"links text-decoration-none fw-bold" %>
     <% end %>
     <hr>
 
     <!-- 会員情報の編集 -->
-    <div class="container">
-      <div class="d-flex justify-content-between">
-        <div class="row">
-          <div class="col-2 d-flex align-items-center">
-            <i class="fas fa-user fa-3x"></i>
-          </div>
-          <div class="col-9 d-flex align-items-center ml-2 mt-3">
-            <div class="d-flex flex-column">
-              <label for="user-name">会員情報の編集</label>
-              <p>アカウント情報の編集</p>
-            </div>
+    <div class="d-flex justify-content-between">
+      <div class="row">
+        <div class="col-3 d-flex align-items-center">
+          <i class="fas fa-user fa-2x"></i>
+        </div>
+        <div class="col-9 d-flex align-items-center ml-2 mt-3">
+          <div class="d-flex flex-column">
+            <label for="user-name">会員情報の編集</label>
+            <p>アカウント情報の編集</p>
           </div>
         </div>
-        <div class="d-flex align-items-center">
-          <%= link_to mypage_edit_users_path do %>
-            <i class="fas fa-chevron-right fa-2x"></i>
-          <% end %>
-        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <%= link_to mypage_edit_users_path do %>
+          <i class="fas fa-chevron-right fa-2x links"></i>
+        <% end %>
       </div>
     </div>
     <hr>
 
     <!-- お気に入り一覧 -->
-    <div class="container">
-      <div class="d-flex justify-content-between">
-        <div class="row">
-          <div class="col-2 d-flex align-items-center">
-            <i class="far fa-heart fa-3x"></i>
-          </div>
-          <div class="col-9 d-flex align-items-center ml-2 mt-3">
-            <div class="d-flex flex-column">
-              <label for="user-name">お気に入り一覧</label>
-              <p>お気に入りに追加した店舗を確認できます</p>
-            </div>
+    <div class="d-flex justify-content-between">
+      <div class="row">
+        <div class="col-2 d-flex align-items-center">
+          <i class="far fa-heart fa-2x"></i>
+        </div>
+        <div class="col-9 d-flex align-items-center ml-2 mt-3">
+          <div class="d-flex flex-column">
+            <label for="user-name">お気に入り一覧</label>
+            <p>お気に入りに追加した店舗を確認できます</p>
           </div>
         </div>
-        <div class="d-flex align-items-center">
-          <%= link_to mypage_favorite_users_path do %>
-            <i class="fas fa-chevron-right fa-2x"></i>
-          <% end %>
-        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <%= link_to mypage_favorite_users_path do %>
+          <i class="fas fa-chevron-right fa-2x links"></i>
+        <% end %>
       </div>
     </div>
     <hr>
 
     <!-- 予約一覧 -->
-    <div class="container">
-      <div class="d-flex justify-content-between">
-        <div class="row">
-          <div class="col-2 d-flex align-items-center">
-            <i class="fa-solid fa-shop fa-3x"></i>
-          </div>
-          <div class="col-9 d-flex align-items-center ml-2 mt-3">
-            <div class="d-flex flex-column">
-              <label for="user-name">予約一覧</label>
-              <p>予約した店舗を確認できます</p>
-            </div>
+    <div class="d-flex justify-content-between">
+      <div class="row">
+        <div class="col-3 d-flex align-items-center">
+          <i class="fa-solid fa-shop fa-2x"></i>
+        </div>
+        <div class="col-9 d-flex align-items-center ml-2 mt-3">
+          <div class="d-flex flex-column">
+            <label for="user-name">予約一覧</label>
+            <p>予約した店舗を確認できます</p>
           </div>
         </div>
-        <div class="d-flex align-items-center">
-          <%= link_to mypage_reserve_users_path do %>
-            <i class="fas fa-chevron-right fa-2x"></i>
-          <% end %>
-        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <%= link_to mypage_reserve_users_path do %>
+          <i class="fas fa-chevron-right fa-2x links"></i>
+        <% end %>
       </div>
     </div>
     <hr>
 
     <!-- 有料会員用クレカ登録画面 -->
-    <div class="container">
-      <div class="d-flex justify-content-between">
-        <div class="row">
-          <div class="col-2 d-flex align-items-center">
-            <i class="fas fa-credit-card fa-3x"></i>
-          </div>
-          <div class="col-9 d-flex align-items-center ml-2 mt-3">
-            <div class="d-flex flex-column">
-              <label for="user-name">クレジットカード情報</label>
-              <p>クレジットカード情報を編集できます</p>
-            </div>
+    <div class="d-flex justify-content-between">
+      <div class="row">
+        <div class="col-2 d-flex align-items-center">
+          <i class="fas fa-credit-card fa-2x"></i>
+        </div>
+        <div class="col-9 d-flex align-items-center ml-2 mt-3">
+          <div class="d-flex flex-column">
+            <label for="user-name">クレジットカード情報</label>
+            <p>クレジットカード情報を編集できます</p>
           </div>
         </div>
-        <div class="d-flex align-items-center">
-          <%= link_to mypage_register_card_users_path do %>
-            <i class="fas fa-chevron-right fa-2x"></i>
-          <% end %>
-        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <%= link_to mypage_register_card_users_path do %>
+          <i class="fas fa-chevron-right fa-2x links"></i>
+        <% end %>
       </div>
     </div>
     <hr>
 
     <!-- ログアウト -->
-    <div class="container">
-      <div class="d-flex justify-content-between">
-        <div class="row">
-          <div class="col-2 d-flex align-items-center">
-            <i class="fas fa-sign-out-alt fa-3x"></i>
-          </div>
-          <div class="col-9 d-flex align-items-center ml-2 mt-3">
-            <div class="d-flex flex-column">
-              <label for="user-name">ログアウト</label>
-              <p>ログアウトします</p>
-            </div>
+    <div class="d-flex justify-content-between">
+      <div class="row">
+        <div class="col-3 d-flex align-items-center">
+          <i class="fas fa-sign-out-alt fa-2x"></i>
+        </div>
+        <div class="col-9 d-flex align-items-center ml-2 mt-3">
+          <div class="d-flex flex-column">
+            <label for="user-name">ログアウト</label>
+            <p>ログアウトします</p>
           </div>
         </div>
-        <div class="d-flex align-items-center">
-          <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
-            <i class="fas fa-chevron-right fa-2x"></i>
-          <% end %>
-        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
+          <i class="fas fa-chevron-right fa-2x links"></i>
+        <% end %>
       </div>
     </div>
     <hr>

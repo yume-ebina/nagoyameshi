@@ -1,10 +1,22 @@
-<p>トップページ</p>
-<% if user_signed_in? && current_user.role == "admin" %>
-  <!-- 管理者にのみ表示 -->
-  <%= link_to rails_admin_path do %>
-    <button type="button" class="btn btn-primary">管理ページはこちら！</button>
-  <% end %>
-  <%= link_to admins_aggregate_path do %>
-    <button type="button" class="btn btn-primary">集計ページはこちら！</button>
-  <% end %>
-<% end %>
+<div class="fullscreen-bg">
+  <img src="top.jpg" alt="Background Image" class="fullscreen-bg-image">
+</div>
+<div class="top-contents container">
+  <div class="row">
+    <div class="col">
+      <h1 class="top-title">Nagoyameshi</h1>
+      <p class="top-text">名古屋限定レストラン情報サイト</p>
+      <div class="text-center">
+        <div class="row gap-4 mx-5 justify-content-center">
+          <%= link_to "和食", "/restaurants?category_ids=japanese", class: "col-lg-2 top-category" %>
+          <%= link_to "イタリアン", "/restaurants?category_ids=italian", class: "col-lg-2 top-category" %>
+          <%= link_to "中華", "/restaurants?category_ids=chinese", class: "col-lg-2 top-category" %>
+          <%= link_to "フレンチ", "/restaurants?category_ids=french", class: "col-lg-2 top-category" %>
+          <%= link_to "韓国料理", "/restaurants?category_ids=korean", class: "col-lg-2 top-category" %>
+          <%= link_to "タイ料理", "/restaurants?category_ids=thai", class: "col-lg-2 top-category" %>
+          <%= link_to "ラーメン", "/restaurants?category_ids=ramen", class: "col-lg-2 top-category" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

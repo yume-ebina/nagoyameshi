@@ -1,72 +1,89 @@
-<table class="table">
-  <tr>
-    <th>店舗名</th>
-    <th>説明</th>
-    <th>価格帯</th>
-    <th>営業時間</th>
-    <th>郵便番号</th>
-    <th>住所</th>
-    <th>電話番号</th>
-    <th>定休日</th>
-    <th>カテゴリ</th>
-  </tr>
-  <tr>
-    <td><%= @restaurant.name %></td>
-    <td><%= @restaurant.description %></td>
-    <td><%= @restaurant.lowest_price %>~<%= @restaurant.highest_price %></td>
-    <td><%= @restaurant.opening_hours %>~<%= @restaurant.closing_hours %></td>
-    <td><%= @restaurant.postal_code %></td>
-    <td><%= @restaurant.adress %></td>
-    <td><%= @restaurant.tel %></td>
-    <td><%= @restaurant.regular_holiday %></td>
-    <td><%= @restaurant.category_id_i18n %></td>
-  </tr>
-</table>
+<div class="container">
+  <p class="fs-6 fw-bold">店舗情報</p>
+  <table class="table">
+    <tr>
+      <th>店舗名</th>
+      <td><%= @restaurant.name %></td>
+    </tr>
+    <tr>
+      <th>説明</th>
+      <td><%= @restaurant.description %></td>
+    </tr>
+    <tr>
+      <th>価格帯</th>
+      <td><%= @restaurant.lowest_price %>~<%= @restaurant.highest_price %></td>
+    </tr>
+    <tr>
+      <th>営業時間</th>
+      <td><%= @restaurant.opening_hours %>~<%= @restaurant.closing_hours %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= @restaurant.postal_code %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @restaurant.adress %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= @restaurant.tel %></td>
+    </tr>
+    <tr>
+      <th>定休日</th>
+      <td><%= @restaurant.regular_holiday %></td>
+    </tr>
+    <tr>
+      <th>カテゴリ</th>
+      <td><%= @restaurant.category_id_i18n %></td>
+    </tr>
+  </table>
 
 
-<!-- お気に入りボタン -->
-<div>
-  <% if user_signed_in? %>
-    <% if current_user.liked?(@restaurant) %>
-      <%= button_to 'お気に入りを外す', restaurant_likes_path(@restaurant), {method: :delete, class: "btn nagoyameshi-unlike-button"} %>
-    <% else %>
-      <%= button_to 'お気に入り', restaurant_likes_path(@restaurant), method: :post, class:"btn nagoyameshi-like-button"  %>
-    <% end %>
-  <% else %>
-    <p>ログインするとお気に入りボタンが押せます</p>
-  <% end %>
-</div>
-
-<!-- レビュー一覧 -->
-<div class="w-50 mt-5">
-  <p class="fs-6 fw-bold">レビュー</p>
-  <% @reviews.each do |review| %>
-    <div>
-      <p class="review-score-color">
-        <% Review.scores[review.score].to_i.times.each do |i| %>
-          ★
-        <% end %>
-      </p>
-      <p class="fs-7"><%= review.content %></p>
-      <p class="fs-7"><%= review.user.name %></p>
-      <p><%= l review.created_at, format: :normal %></p>
-    </div>
-  <% end %>
-</div>
-
-<!-- レビュー投稿フォーム -->
-<% if user_signed_in? %>
-  <div class="w-50">
-    <div>
-      <%= form_with model: Review.new, url: restaurant_reviews_path(@restaurant) do |f| %>
-        <p class="fs-6 fw-bold">評価</p>
-        <%= f.select :score, Review.scores_i18n.keys.map {|key| [I18n.t("activerecord.enums.review.score.#{key}"), key]}, {}, class: "form-control m-2 review-score-color" %>
-        <p class="fs-6 fw-bold">レビュー内容</p>
-        <%= f.text_area :content, class: "form-control m-2" %>
-        <%= f.submit "レビューを追加" , class:"btn nagoyameshi-submit-button ml-2"%>
+  <!-- お気に入りボタン -->
+  <div>
+    <% if user_signed_in? %>
+      <% if current_user.liked?(@restaurant) %>
+        <%= button_to 'お気に入りを外す', restaurant_likes_path(@restaurant), {method: :delete, class: "btn nagoyameshi-unlike-button"} %>
+      <% else %>
+        <%= button_to 'お気に入り', restaurant_likes_path(@restaurant), method: :post, class:"btn nagoyameshi-like-button" %>
       <% end %>
-    </div>
+    <% else %>
+      <p>ログインするとお気に入りボタンが押せます</p>
+    <% end %>
   </div>
-<% end %>
 
-<%= link_to "Back", restaurants_path %>
+  <!-- レビュー一覧 -->
+  <div class="w-50 mt-5">
+    <p class="fs-6 fw-bold">レビュー</p>
+    <% @reviews.each do |review| %>
+      <div>
+        <p class="review-score-color">
+          <% Review.scores[review.score].to_i.times.each do |i| %>
+            ★
+          <% end %>
+        </p>
+        <p class="fs-7"><%= review.content %></p>
+        <p class="fs-7"><%= review.user.name %></p>
+        <p><%= l review.created_at, format: :normal %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- レビュー投稿フォーム -->
+  <% if user_signed_in? %>
+    <div class="w-50 mb-4">
+      <div>
+        <%= form_with model: Review.new, url: restaurant_reviews_path(@restaurant) do |f| %>
+          <p class="fs-6 fw-bold">評価</p>
+          <%= f.select :score, Review.scores_i18n.keys.map {|key| [I18n.t("activerecord.enums.review.score.#{key}"), key]}, {}, class: "form-control m-2 review-score-color" %>
+          <p class="fs-6 fw-bold">レビュー内容</p>
+          <%= f.text_area :content, class: "form-control m-2" %>
+          <%= f.submit "レビューを追加" , class:"btn nagoyameshi-submit-button ml-2"%>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= link_to "戻る", restaurants_path, class:"links text-decoration-none" %>
+</div>

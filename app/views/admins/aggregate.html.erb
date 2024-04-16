@@ -1,31 +1,33 @@
-<h1>集計ページ</h1>
-<table class="table">
-  <tr>
-    <th>会員数</th>
-    <td><%= User.count %>人</td>
-  </tr>
-  <tr>
-    <th>無料会員数</th>
-    <td><%= @free_users %>人</td>
-  </tr>
-  <tr>
-    <th>プレミアムユーザー</th>
-    <td><%= @premium_users %>人</td>
-  </tr>
-  <tr>
-    <th>有効なプレミアムユーザー</th>
-    <td><%= @effective_premium_user %>人</td>
-  </tr>
-  <tr>
-    <th>店舗数</th>
-    <td><%= Restaurant.count %>店舗</td>
-  </tr>
-  <tr>
-    <th>予約数</th>
-    <td><%= Reservation.count %>回</td>
-  </tr>
-  <tr>
-    <th>月間売上</th>
-    <td><%= number_to_currency(@effective_premium_user * 330) %></td>
-  </tr>
-</table>
+<div class="container">
+  <h1>集計ページ</h1>
+  <table class="table">
+    <tr>
+      <th>会員数</th>
+      <td><%= User.count %>人</td>
+    </tr>
+    <tr>
+      <th>無料会員数</th>
+      <td><%= @free_users %>人</td>
+    </tr>
+    <tr>
+      <th>プレミアムユーザー</th>
+      <td><%= @premium_users %>人</td>
+    </tr>
+    <tr>
+      <th>有効なプレミアムユーザー</th>
+      <td><%= @effective_premium_user %>人</td>
+    </tr>
+    <tr>
+      <th>店舗数</th>
+      <td><%= Restaurant.count %>店舗</td>
+    </tr>
+    <tr>
+      <th>予約数</th>
+      <td><%= Reservation.count %>回</td>
+    </tr>
+    <tr>
+      <th>月間売上</th>
+      <td><%= number_to_currency(@effective_premium_user * 330) %></td>
+    </tr>
+  </table>
+</div>
