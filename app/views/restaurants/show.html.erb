@@ -1,5 +1,8 @@
 <div class="container">
   <p class="fs-6 fw-bold">店舗情報</p>
+  <% if @restaurant.image.attached? && @restaurant.image.content_type.in?(%w[image/jpeg image/png]) %>
+    <div><%= image_tag(@restaurant.large_thumbnail) %></div>
+  <% end %>
   <table class="table">
     <tr>
       <th>店舗名</th>
