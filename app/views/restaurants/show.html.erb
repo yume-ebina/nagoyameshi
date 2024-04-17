@@ -1,56 +1,67 @@
 <div class="container">
-  <p class="fs-6 fw-bold">店舗情報</p>
-  <table class="table">
-    <tr>
-      <th>店舗名</th>
-      <td><%= @restaurant.name %></td>
-    </tr>
-    <tr>
-      <th>説明</th>
-      <td><%= @restaurant.description %></td>
-    </tr>
-    <tr>
-      <th>価格帯</th>
-      <td><%= @restaurant.lowest_price %>~<%= @restaurant.highest_price %></td>
-    </tr>
-    <tr>
-      <th>営業時間</th>
-      <td><%= @restaurant.opening_hours %>~<%= @restaurant.closing_hours %></td>
-    </tr>
-    <tr>
-      <th>郵便番号</th>
-      <td><%= @restaurant.postal_code %></td>
-    </tr>
-    <tr>
-      <th>住所</th>
-      <td><%= @restaurant.adress %></td>
-    </tr>
-    <tr>
-      <th>電話番号</th>
-      <td><%= @restaurant.tel %></td>
-    </tr>
-    <tr>
-      <th>定休日</th>
-      <td><%= @restaurant.regular_holiday %></td>
-    </tr>
-    <tr>
-      <th>カテゴリ</th>
-      <td><%= @restaurant.category_id_i18n %></td>
-    </tr>
-  </table>
-
-
-  <!-- お気に入りボタン -->
-  <div>
-    <% if user_signed_in? %>
-      <% if current_user.liked?(@restaurant) %>
-        <%= button_to 'お気に入りを外す', restaurant_likes_path(@restaurant), {method: :delete, class: "btn nagoyameshi-unlike-button"} %>
+  <div class="d-flex justify-content-between">
+    <p class="fs-6 fw-bold">店舗情報</p>
+    <!-- お気に入りボタン -->
+    <div>
+      <% if user_signed_in? %>
+        <% if current_user.liked?(@restaurant) %>
+          <%= button_to restaurant_likes_path(@restaurant), {method: :delete, class: "btn nagoyameshi-unlike-button"} do %>
+            <i class="far fa-heart fa-2s"></i>
+          <% end %>
+        <% else %>
+          <%= button_to restaurant_likes_path(@restaurant), method: :post, class:"btn nagoyameshi-like-button" do %>
+            <i class="far fa-heart fa-2s"></i>
+          <% end %>
+        <% end %>
       <% else %>
-        <%= button_to 'お気に入り', restaurant_likes_path(@restaurant), method: :post, class:"btn nagoyameshi-like-button" %>
+        <p>ログインするとお気に入りボタンが押せます</p>
       <% end %>
-    <% else %>
-      <p>ログインするとお気に入りボタンが押せます</p>
-    <% end %>
+    </div>
+  </div>
+  <div class="container text-center">
+    <div class="row">
+      <table class="table col align-middle">
+        <tr>
+          <th>店舗名</th>
+          <td><%= @restaurant.name %></td>
+        </tr>
+        <tr>
+          <th>説明</th>
+          <td><%= @restaurant.description %></td>
+        </tr>
+        <tr>
+          <th>価格帯</th>
+          <td><%= @restaurant.lowest_price %>~<%= @restaurant.highest_price %></td>
+        </tr>
+        <tr>
+          <th>営業時間</th>
+          <td><%= @restaurant.opening_hours %>~<%= @restaurant.closing_hours %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @restaurant.postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @restaurant.adress %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @restaurant.tel %></td>
+        </tr>
+        <tr>
+          <th>定休日</th>
+          <td><%= @restaurant.regular_holiday %></td>
+        </tr>
+        <tr>
+          <th>カテゴリ</th>
+          <td><%= @restaurant.category_id_i18n %></td>
+        </tr>
+      </table>
+      <% if @restaurant.image.attached? && @restaurant.image.content_type.in?(%w[image/jpeg image/png]) %>
+        <div class="col"><%= image_tag(@restaurant.large_thumbnail) %></div>
+      <% end %>
+    </div>
   </div>
 
   <!-- レビュー一覧 -->

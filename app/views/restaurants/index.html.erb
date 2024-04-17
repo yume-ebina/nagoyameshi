@@ -18,14 +18,20 @@
       </h1>
     </div>
 
-    <table class="table">
+    <table class="table align-middle">
       <tr>
+        <th></th>
         <th>店舗名</th>
         <th class="text-center">カテゴリ</th>
         <th class="text-center">詳細</th>
       </tr>
       <% @restaurants.each do |restaurant| %>
         <tr>
+          <td>
+            <% if restaurant.image.attached? %>
+              <div><%= image_tag(restaurant.thumbnail) %></div>
+            <% end %>
+          </td>
           <td><%= restaurant.name %></td>
           <td class="text-center"><%= restaurant.category_id_i18n %></td>
           <td class="text-center">
