@@ -1,5 +1,5 @@
 RailsAdmin.config do |config|
-  config.asset_source = :importmap
+  # config.asset_source = :importmap
   config.parent_controller = 'ApplicationController'
 
   ### Popular gems integration
