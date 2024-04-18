@@ -10,7 +10,11 @@
       <tr>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.category_id_i18n %></td>
-        <td><%= link_to "Show", restaurant_path(restaurant) %></td>
+        <td>
+          <%= link_to restaurant_path(restaurant) do %>
+            <i class="fas fa-chevron-right fa-2s links"></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>
