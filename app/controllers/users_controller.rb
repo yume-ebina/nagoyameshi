@@ -25,20 +25,19 @@ class UsersController < ApplicationController
 
   def register_card
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-    @count = 0
-    card_info = {}
+    return @card if @user.token.blank?
 
     result = Payjp::Customer.retrieve(@user.token).cards.all(limit: 1).data[0]
     @count = Payjp::Customer.retrieve(@user.token).cards.all.count
 
     card_info = {
-      brand:     result.brand,
-      exp_month: result.exp_month,
-      exp_year:  result.exp_year,
-      last4:     result.last4
-    }
+    brand:     result.brand,
+    exp_month: result.exp_month,
+    exp_year:  result.exp_year,
+    last4:     result.last4
+  }
 
-    return @card = card_info if @user.token.present?
+    @card = card_info
   end
 
   def token
