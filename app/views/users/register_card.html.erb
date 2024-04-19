@@ -5,9 +5,13 @@
       <h3>登録済みのクレジットカード</h3>
 
       <hr>
-      <h4><%= @card[:brand] %></h4>
-      <p>有効期限: <%= "#{ @card[:exp_year] } / #{ @card[:exp_month] }" %></p>
-      <p>カード番号: ************<%= @card[:last4] %></p>
+      <% if @card.present?%>
+        <h4><%= @card[:brand] %></h4>
+        <p>有効期限: <%= "#{ @card[:exp_year] } / #{ @card[:exp_month] }" %></p>
+        <p>カード番号: ************<%= @card[:last4] %></p>
+      <% else %>
+        <p>まだ登録カードはありません</p>
+      <% end %>
 
       <%= form_with url: mypage_token_users_path, method: :post do |f| %>
         <% if @card.present? %>
