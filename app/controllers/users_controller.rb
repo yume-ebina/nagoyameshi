@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  authorize_resource class: UsersController
   before_action :set_user
   before_action :authenticate_user!
 
