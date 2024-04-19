@@ -32,11 +32,11 @@ class UsersController < ApplicationController
     @count = Payjp::Customer.retrieve(@user.token).cards.all.count
 
     card_info = {
-    brand:     result.brand,
-    exp_month: result.exp_month,
-    exp_year:  result.exp_year,
-    last4:     result.last4
-  }
+      brand:     result.brand,
+      exp_month: result.exp_month,
+      exp_year:  result.exp_year,
+      last4:     result.last4
+    }
 
     @card = card_info
   end
