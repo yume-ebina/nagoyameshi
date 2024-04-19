@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  authorize_resource class: LikesController
   before_action :authenticate_user!
   before_action :set_restaurant
 
