@@ -12,11 +12,12 @@ class Ability
     elsif user.premium_end_date.present? && user.premium_end_date > Time.zone.today
       can :manage, :all
       cannot :access, :rails_admin
-      cannot :aggregate, :AdminsController
+      cannot :aggregate, AdminsController
 
     # 一般ユーザーはCRUD操作を制限し、管理者画面は閲覧不可能
     else
       can :read, :all
+      cannot :aggregate, AdminsController
     end
   end
 end
