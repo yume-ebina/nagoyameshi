@@ -61,6 +61,9 @@ class UsersController < ApplicationController
   def registration
   end
 
+  def guide
+  end
+
   def plan #定期課金プラン
     Payjp::Plan.create(
       :amount => 330,
