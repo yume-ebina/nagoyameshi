@@ -1,5 +1,7 @@
 module Restaurants
   class ReviewsController < ApplicationController
+    authorize_resource class: self
+
     def create
       restaurant = Restaurant.find(params[:restaurant_id])
       review = restaurant.reviews.new(review_params)

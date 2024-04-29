@@ -64,6 +64,12 @@
     </div>
   </div>
 
+  <div>
+    <% if user_signed_in? %>
+      <%= button_to "予約する", restaurant_reservations_path(@restaurant), method: :get, class:"btn nagoyameshi-like-button"%>
+    <% end %>
+  </div>
+
   <!-- レビュー一覧 -->
   <div class="w-50 mt-5">
     <p class="fs-6 fw-bold">レビュー</p>

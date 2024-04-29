@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+  authorize_resource class: self
   before_action :authenticate_user!
   before_action :set_restaurant
 

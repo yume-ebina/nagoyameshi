@@ -1,0 +1,18 @@
+<div class="container mt-5 d-flex justify-content-center align-items-center flex-column">
+  <p class="mb-4 fs-4 fw-bolder text-center">プレミアム会員になるとできること</p>
+  <ul class="list-group col-4 fw-semibold ">
+    <li class="list-group-item">
+      店舗の予約
+    </li>
+    <li class="list-group-item">
+      店舗のお気に入り登録
+    </li>
+    <li class="list-group-item">
+      店舗レビュー投稿
+    </li>
+  </ul>
+  <% if @user.premium_end_date == nil || @user.premium_end_date < Time.now %>
+    <%= button_to 'プレミアムプランにアップグレード', registration_users_path, class:"btn nagoyameshi-submit-button mt-5" %>
+  <% end %>
+  <%= link_to 'トップへ戻る', root_path, class:"my-5 text-decoration-none links"%>
+</div>

@@ -21,6 +21,33 @@ User.create!(
   confirmation_token: nil
 )
 
+User.create!(
+  email: "cityeventa1@gmail.com",
+  password: 'hogehoge',
+  password_confirmation: 'hogehoge',
+  name: '一般ユーザー',
+  kana: 'イッパン',
+  gender: 'female',
+  birthday: '1999-11-11',
+  role: 'general',
+  confirmed_at: Time.current,
+  confirmation_token: nil
+)
+
+User.create!(
+  email: "aaaaa@gmail.com",
+  password: 'hogehoge',
+  password_confirmation: 'hogehoge',
+  name: '有料ユーザー',
+  kana: 'プレミアム',
+  gender: 'female',
+  birthday: '1999-10-11',
+  role: 'general',
+  confirmed_at: Time.current,
+  confirmation_token: nil,
+  premium_end_date: "2025-12-24"
+)
+
 30.times.each do |i|
   restaurant_name = Faker::Music::RockBand.name
   postal_code = Faker::Address.postcode

@@ -1,4 +1,5 @@
 class AdminsController < ApplicationController
+  authorize_resource class: self
   def aggregate
     #無料ユーザー
     @free_users = User.where(premium_end_date: nil).count

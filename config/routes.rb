@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       post "registration", :to => "users#paid_decision"
       get "premium_cancel", :to => "users#premium_cancel"
       get "unsubscribe", :to => "users#unsubscribe"
+      get "guide", :to => "users#guide"
     end
   end
 
