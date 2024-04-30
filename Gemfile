@@ -78,6 +78,8 @@ gem "payjp"
 
 gem 'ruby-vips', '~> 2.1', '>= 2.1.4'
 
+gem 'terser'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
@@ -108,5 +110,10 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+end
+
+group :production do
+  # MySQL
+  gem 'mysql2'
 end
 gem "cssbundling-rails"

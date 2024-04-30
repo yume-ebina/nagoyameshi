@@ -24,7 +24,7 @@ Rails.application.configure do
   # config.public_file_server.enabled = false
 
   # Compress CSS using a preprocessor.
-  # config.assets.css_compressor = :sass
+  config.assets.css_compressor = :sass
 
   # Do not fall back to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
@@ -94,4 +94,23 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  Rails.application.configure do
+    # default url
+    config.action_mailer.default_url_options = {
+      protocol: 'http',
+      host:'localhost:3000'
+    }
+    # mail setting
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :user_name => ENV["GMAIL_ADDRESS"],
+      :password => ENV["GMAIL_2FACTOR_PASSWORD"],
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
+  end
 end
