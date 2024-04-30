@@ -3,8 +3,8 @@ class CreateReviews < ActiveRecord::Migration[7.1]
     create_table :reviews do |t|
       # レビューの内容
       t.text :content
-      t.references :restaurant, null: false, foreign_key: true
-      t.references :user, null: false, foreign_key: true
+      t.references :restaurant, null: false, foreign_key: true, type: :bigint
+      t.references :user, null: false, foreign_key: true, type: :bigint
 
       t.timestamps
     end

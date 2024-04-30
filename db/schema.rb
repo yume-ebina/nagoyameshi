@@ -53,8 +53,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_16_052136) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "restaurant_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_likes_on_restaurant_id"
@@ -64,11 +64,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_16_052136) do
   create_table "reservations", force: :cascade do |t|
     t.date "day", null: false
     t.string "time", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "start_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "restaurant_id", null: false
+    t.bigint "restaurant_id", null: false
     t.index ["restaurant_id"], name: "index_reservations_on_restaurant_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
@@ -91,8 +91,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_16_052136) do
 
   create_table "reviews", force: :cascade do |t|
     t.text "content"
-    t.integer "restaurant_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "restaurant_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "score", default: 0
