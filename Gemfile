@@ -48,6 +48,7 @@ gem "devise"
 gem "bootstrap", "~> 5.3.0"
 gem "jquery-rails"
 gem "sassc-rails"
+gem 'bootstrap-sass'
 
 # 環境変数を使用
 gem "dotenv-rails"
