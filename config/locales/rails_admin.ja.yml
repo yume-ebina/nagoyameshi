@@ -3,11 +3,13 @@ ja:
   activerecord:
     # 全てのモデル記載
     models:
+      admin: 管理者
       user: ユーザー
       category: カテゴリー
       restaurant: 店舗
       review: レビュー
-      like: いいね
+      like: お気に入り
+      reservation: 予約
     attributes:
       # 各モデルのカラム名を記載
       user:
